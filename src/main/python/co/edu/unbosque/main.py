@@ -88,6 +88,7 @@ def calcular_valor(dato):
     else:
         return "Regular"
 
+
 totalBuenos = 0
 totalMalos = 0
 totalRegular = 0
@@ -95,16 +96,14 @@ for dato in datos:
 
     value = calcular_valor(dato)
     dato["value"] = value
-    if (value) == "Bueno":
+    if value == "Bueno":
         totalBuenos += 1
     elif value == "Malo":
         totalMalos += 1
     elif value == "Regular":
         totalRegular += 1
 
-
 print(datos)
 print("Total Buenos: " + str(totalBuenos))
 print("Total Malos: " + str(totalMalos))
 print("Total Regular: " + str(totalRegular))
-
