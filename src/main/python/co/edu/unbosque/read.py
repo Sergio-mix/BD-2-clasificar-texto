@@ -9,13 +9,16 @@ def readExcel(url):
             text = str(df['text'].values[i]).lower()
             likes = df['likes'].values[i]
             comments = df['comments'].values[i]
+            shares = df['shares'].values[i]
             list.append(
                 {
-                 'text': text,
-                 'likes': likes,
-                 'comments': comments,
-                 'valor': ''
-                 }
+                    'text': text,
+                    'likes': likes,
+                    'comments': comments,
+                    'shares': shares,
+                    'product': '',
+                    'value': ''
+                }
             )
         return list
     except Exception as e:

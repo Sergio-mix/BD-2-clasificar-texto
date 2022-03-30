@@ -5,10 +5,11 @@ if __name__ == '__main__':
     print("")
 
 datos = read.readExcel(
-    url='C:/Users/alejo/IdeaProjects/bd-2-clasificar_Texto/src/resources/docs/fb_emp.xlsx')
+    url='C:/Users/alejo/IdeaProjects/bd-2-clasificar_Texto/src/resources/docs/fb_emp.xlsx'
+)
 
 
-def calcular_Producto(text):
+def calcular_Categoria(text):
     list = ["mercado"]
     patron = re.compile(r'\W+')
     palabras = patron.split(text)
@@ -19,4 +20,4 @@ def calcular_Producto(text):
     return None
 
 
-print(calcular_Producto(datos[2]['text']))
+print(calcular_Categoria(datos[2]['text']))
