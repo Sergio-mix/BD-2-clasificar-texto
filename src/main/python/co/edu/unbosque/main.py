@@ -66,34 +66,45 @@ def list_share(datos):
 def calcular_valor(dato):
     max_likes = max(list_likes(datos))
     min_likes = min(list_likes(datos))
-    mediovalor = (max_likes + min_likes) / 2
 
     max_comentarios = max(list_comentarios(datos))
     min_comentarios = min(list_comentarios(datos))
-    mediovalorcomentarios = (max_comentarios + min_comentarios) / 2
 
     max_shares = max(list_share(datos))
     min_shares = min(list_share(datos))
-    mediovalorshares = (max_shares + min_shares) / 2
-
-    medioTotal = (mediovalor + mediovalorcomentarios + mediovalorshares) / 3
 
     maxTotal = (max_likes + max_comentarios + max_shares) / 3
 
     minTotal = (min_likes + min_comentarios + min_shares) / 3
 
+    medioTotal = (maxTotal + minTotal) / 2
+    medioMinimo = medioTotal / 2
     promedio = dato['likes'] + dato['comments'] + dato['shares']
     promedio = promedio / 3
     if promedio > medioTotal:
         return "Bueno"
-    elif promedio < medioTotal and promedio < maxTotal:
+    elif promedio < medioMinimo:
         return "Malo"
-    elif medioTotal <= promedio <= (maxTotal*0.5):
+    else:
         return "Regular"
 
-
+totalBuenos = 0
+totalMalos = 0
+totalRegular = 0
 for dato in datos:
-    print(calcular_valor(dato))
-    dato["value"] = calcular_valor(dato)
+
+    value = calcular_valor(dato)
+    dato["value"] = value
+    if (value) == "Bueno":
+        totalBuenos += 1
+    elif value == "Malo":
+        totalMalos += 1
+    elif value == "Regular":
+        totalRegular += 1
+
 
 print(datos)
+print("Total Buenos: " + str(totalBuenos))
+print("Total Malos: " + str(totalMalos))
+print("Total Regular: " + str(totalRegular))
+
